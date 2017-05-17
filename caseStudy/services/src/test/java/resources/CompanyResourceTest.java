@@ -19,7 +19,16 @@ package resources;
 /**
  * Write your tests for the Company Resource here
  */
-public class CompanyResourceTest {
+public class CompanyResourceTest 
+{
+    if(stockTicker==null || stockTicker=="")
+    {
+        //throw an exception
+    }
+     if(validateCompany(stockTicker) == false)
+        {
+            //throw an exception
+        }
 
     // TODO - write a test for each method in the CompanyResource class
     // Think about both positive and negative test cases:

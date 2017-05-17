@@ -20,7 +20,18 @@ package resources;
  * Write your tests for the Stock Resource here
  */
 public class StockResourceTest {
-
+    if(stockTicker==null || startDate == null || endDate == null)
+    {
+        //throw
+    }
+    if(stockTicker=="" || startDate == "" || endDate == "")
+    {
+        //throw
+    }
+    if(validateStock(stockTicker, startDate, endDate) == false)
+     {
+            //throw an exception
+     }
     // TODO - write a test for each method in the CompanyResource class
     // Think about both positive and negative test cases:
     // What happens if no inputs are passed?

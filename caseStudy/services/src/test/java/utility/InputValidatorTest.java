@@ -19,8 +19,24 @@ package utility;
 /**
  * Write tests for the InputValidator class here
  */
-public class InputValidatorTest {
-
+public class InputValidatorTest 
+{
     // TODO - write a test for each method in the InputValidator class
-
+    public static boolean validateInput()
+    {
+        if(fileName == null || fileName == "")
+         {
+            return false;
+         }
+        validateFile("companyInfo.json");
+        validateFile("historicalStockData.json");
+        validateFile("foo");
+        validateCompany("AAPL");
+        validateCompany("GOOG");
+        validateCompany("FOO");
+        validateStock("AAPL", "3/15/2017", "5/1/2017");
+        validateStock("FOO", "3/16/2017", "3/28/2017");
+        validateStock("BIDU", "4/6/2017", "3/15/2017");
+    }
+    
 }

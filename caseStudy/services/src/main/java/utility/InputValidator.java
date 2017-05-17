@@ -15,7 +15,7 @@
  */
 
 package utility;
-import date thing
+import java.text.SimpleDateFormat;
 
 /**
  * Utility class to validate inputs

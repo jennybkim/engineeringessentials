@@ -1,20 +1,18 @@
-/**
- * Copyright 2017 Goldman Sachs.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
-
 package pojo;
+
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 /**
  * This class will define a company's end-of-day stock price
@@ -22,9 +20,39 @@ package pojo;
  */
 public class Stock {
 
-    // TODO - Think back to your modelling session
-    // Define the attributes of a stock price based on the
-    // provided data in resources/data
+	private static final ObjectMapper mapper = new ObjectMapper();
 
-    // TODO - add getter and setter methods for your attributes
+	private String name;
+
+	private List<HashMap<String, Double>> dailyClosePrice;
+
+	public Stock() {
+
+	}
+
+	public Stock(String symbol, List<HashMap<String, Double>> dailyClosePrice) {
+		this.name = symbol;
+		this.dailyClosePrice = dailyClosePrice;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public List<HashMap<String, Double>> getDailyClosePrice() {
+		return dailyClosePrice;
+	}
+
+	public void setName(String symbol) {
+		this.name = symbol;
+	}
+
+	public void setDailyClosePrice(List<HashMap<String, Double>> dailyClosePrice) {
+		this.dailyClosePrice = dailyClosePrice;
+	}
+
+	public static ArrayList<Stock> readAllStocks(String fileName) throws JsonParseException, JsonMappingException, IOException {
+		InputStream inputStream = new FileInputStream((fileName));
+		return mapper.readValue(inputStream, new TypeReference<List<Stock>>() {});
+	}
 }

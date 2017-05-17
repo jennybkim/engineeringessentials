@@ -130,7 +130,8 @@ class StockTicker extends React.Component {
         return (
             <div className="stockticker">
                 <div className="ticker-input">
-                    <p><strong>Stock Ticker</strong></p>
+                    <p>Stock Ticker: </p>
+                    <input type = 'text' className = 'ticker-input' name="StockTicker" value={this.props.value} onChange={this.handleChange}/>
                     <div className="stockticker-typeahead">
                         {/* useful props if you decide to use react-bootstrap-typeahead
                         <Typeahead
@@ -160,4 +161,4 @@ class StockTicker extends React.Component {
 
 }
 
-//Don't forget to export your component!
+export default StockTicker;

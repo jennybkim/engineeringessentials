@@ -15,14 +15,15 @@
  */
 
 
-.date {
+/*.date {
+  margin: 0px;
   display: flex;
   flex-direction:row;
-}
-.date-input {
-  margin-left: 1em;
-  margin-right: 1em;
-}
+}*/
+/*.date-input {
+  margin-left: 0px;
+  margin-right: 0px;
+}*/
 
 .date-range {
   display: flex;
@@ -31,7 +32,8 @@
   float:right;
 }
 
-.stockticker {
+/*.stockticker {
+  align-content:center;
   display: flex;
   flex-direction: column;
   float:left;
@@ -40,11 +42,11 @@
 .ticker-input {
   display: flex;
   flex-direction:row;
-}
+}*/
 
-.stockticker-typeahead {
+/*.stockticker-typeahead {
   margin-left: 1em;
-}
+}*/
 
 .company-info {
   margin-top: 1em;
@@ -60,4 +62,14 @@
 .page-display {
   display: flex;
   flex-direction: column;
+}
+
+.header{
+  text-align: center;
+  width: 100%;
+}
+
+.input-form{
+  text-align: center;
+  width: 100%;
 }

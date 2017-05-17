@@ -16,13 +16,32 @@
 
 import React from 'react';
 import Highcharts from 'highcharts';
+import Input from '../Input.js';
 
 class LineChart extends React.Component {
     constructor(props) {
         super(props);
+        this.highchartsOptions = {
+      title: {
+        text: 'Price Per Day'
+      },
+      xAxis: {
+        categories: []
+      },
+      yAxis: {
+        title: {
+          text: 'Price'
+        }
+      },
+      series: [{
+          name: 'Day',
+          data: [1,2,3,4,5,6,7,8,10]
+      }]
+    }
     }
 
     componentDidMount() {
+        Highcharts.chart('chart', this.highchartsOptions);
 /*        Highcharts.chart('chart', {
 
             TODO
@@ -38,7 +57,23 @@ class LineChart extends React.Component {
 
     componentWillReceiveProps(props) {
         console.log("New data received to redraw chart.");
-        
+        var start_date = new Date(this.props.start);
+        var end_date = new Date(this.props.end);
+        var numDays = end_date-start_date+1;
+        var arrX = [];
+        arrX += [start_date];
+        // var x_axis_length = (Date.UTC(end_date[-1:-5], end_date[0:2], end_date[3:5]) - Date.UTC(start_date[-1:-5], start_date[0:2], start_date[3:5]))/86400000;
+        var i = 1;
+        var currentDate = arrX[-1];
+        while (i < numDays){
+            arrX += [currentDate + 1];
+            i++;
+            currentDate = arrX[-1];
+        }
+        this.highchartsOptions.xAxis.categories=arrX;
+        var data = this.props.data;
+        this.chart.series[0].setData(data);
+
         /**
          * TODO
          * Parse the data received from props, a Javascript object, to map to a Javascript array
@@ -49,8 +84,9 @@ class LineChart extends React.Component {
         /**
          * TODO
          * Uncomment the line below to pass the data be displayed to the series
-         * this.chart.series[0].setData(data);
-         */
+         * 
+         **/
+         
     }
 
     componentWillUnmount() {
@@ -65,4 +101,4 @@ class LineChart extends React.Component {
     }
 }
 
-// Don't forget to export your component!
+export default LineChart;

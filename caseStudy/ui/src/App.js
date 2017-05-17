@@ -16,6 +16,12 @@
 
 import React from 'react';
 import './style/App.css';
+import StockTicker from './components/StockTicker';
+import Date from './components/Date';
+import Charts from './components/Charts';
+import Input from './components/Input';
+import Title from './components/Title';
+import LineChart from './components/charts/LineChart';
 
 /**
  * TODO:
@@ -43,6 +49,7 @@ class App extends React.Component{
       return (
           <div className="page-display">
               <div className="input">
+                  <Title/>
               {/**
                * TODO
                * Render the StockTicker and Date components. You can use the date component twice
@@ -58,6 +65,9 @@ class App extends React.Component{
                 </div>
               </div>
 
+                  <Input/>
+                  <LineChart/>
+                  {/*<Charts/>*/}
 
                  {/**
                    *  TODO

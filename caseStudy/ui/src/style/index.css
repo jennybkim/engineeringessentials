@@ -19,3 +19,18 @@ body {
   padding: 20px;
   font-family: 'Roboto Condensed';
 }
+
+h1 {
+  font-size:75px;
+  width: 100%;
+  color: #e54231
+}
+
+h2{
+  font-size: 30px;
+  color:black;
+}
+
+h3{
+  font-size: 20px;
+}

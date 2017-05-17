@@ -38,7 +38,7 @@ class Date extends React.Component {
         this.state = {
             date: moment()
         };
-
+        this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount() {
@@ -46,6 +46,8 @@ class Date extends React.Component {
     }
 
     handleChange(date) {
+        const value = date.target.value;
+        this.props.onChange(value);
         /**
          * TODO
          * Set the state. Call this.props.onChange with the date argument
@@ -57,6 +59,9 @@ class Date extends React.Component {
     render() {
         return (
             <div className="date">
+                <p>{this.props.label}</p>
+                <input type='date' className='date-input' name={this.props.name} value={this.props.value} onChange={this.handleChange} />
+
                 {
                     /**
                      * TODO
@@ -77,4 +82,4 @@ class Date extends React.Component {
 
 }
 
-// Don't forget to export your component!
+export default Date;

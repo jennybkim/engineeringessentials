@@ -27,6 +27,7 @@ class Charts extends React.Component {
              * It can be initialized to be empty.
              */
         };
+        
     }
 
 
@@ -77,6 +78,7 @@ class Charts extends React.Component {
 }
     
     render() {
+        <LineChart/>
         /**
          * TODO
          * Render your LineChart component and pass the data for the chart to display via props
@@ -84,4 +86,4 @@ class Charts extends React.Component {
     }
 }
 
-// Don't forget to export your component!
+export default Charts;

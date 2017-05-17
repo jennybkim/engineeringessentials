@@ -30,7 +30,7 @@ public class StockResource {
     {
         List<Stock> stocks;
         stocks = readAllStocks(fileName);
-        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
         Date start = format.parse(startDate);
         Date end = format.parse(endDate);

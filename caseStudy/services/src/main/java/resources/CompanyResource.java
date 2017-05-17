@@ -15,10 +15,38 @@
  */
 
 package resources;
+import javax.ws.rs.*;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import java.io.IOException;
+import pojo.Company;
 
-// TODO - add your @Path here
+@Path("services")
 public class CompanyResource {
+    @GET
+    @Path("company")
+    @Produces(MediaType.APPLICATION_JSON)
 
+    public Response getCompanyResource(String stockTicker) throws IOException
+    {
+       
+        String fileName = "companyInfo.json";
+        List<Company> companies; //TODO instantiate using Company methods
+        companies = Company.readAllCompanies(fileName); 
+        for(Company c: companies)
+        {
+            if(c.getSymbol().equals(stockTicker)) //change to correct method name
+            {
+                 return Response.ok().entity(c).build();
+            }
+        }
+
+
+
+
+    }
     // TODO - Add a @GET resource to get company data
     // Your service should return data for a given stock ticker
 

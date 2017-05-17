@@ -15,12 +15,70 @@
  */
 
 package utility;
+import date thing
 
 /**
  * Utility class to validate inputs
  */
-public class InputValidator {
+public class InputValidator 
+{
 
+    public static boolean validateFile(String fileName)
+    {   
+        if(fileName.equals("companyInfo.json")) 
+        {
+            return true;
+        }
+        else if(fileName.equals("historicalStockData.json"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public static boolean validateCompany(String stockTicker)
+    {
+        List<String> stockTickers;
+        stockTickers = getAllSymbols("companyInfo.json"); 
+        if(stockTickers.contains(stockTicker))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public static boolean validateStock(String stockTicker, String startDate, String endDate)
+    {
+        boolean check = true;
+        List<String> stockTickers, dates;
+        stockTickers = readAllStockTickers("historicalStockData.json"); 
+        dates = readAllDates("historicalStockData.json"); //do method
+
+        if(!stockTickers.contains(stockTicker))
+        {
+            check = false;
+        }
+        if(!dates.contains(startDate) || !dates.contains(endDate))
+        {
+            check = false;
+        }
+        
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+
+        Date start = format.parse(startDate);
+        Date end = format.parse(endDate);
+
+            if (end.compareTo(start) < 0) {
+                check = false;
+            }
+
+        }
+        return check;
+    }
     // TODO - write a method that will validate your JSON input files
 
     // TODO - write a method that will validate the inputs to the Company Resource
